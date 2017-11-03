@@ -1,0 +1,22 @@
+<nav class="header-tabs">
+    <ul class="header-list">
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/'}">
+        <a class="nav-link" routerLink='/'>Deals</a>
+      </li>
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/accounts'}">
+        <a class="nav-link" routerLink='/accounts'>Accounts</a>
+      </li>
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/contacts'}">
+        <a class="nav-link" routerLink='/contacts'>Contacts</a>
+      </li>
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/notes'}">
+        <a class="nav-link" routerLink='/notes'>Notes</a>
+      </li>
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/calender'}">
+        <a class="nav-link" routerLink='/calender'>Calender</a>
+      </li>
+      <li class="inline-item" [ngClass]="{'active': activeTab=='/positions'}">
+        <a class="nav-link" routerLink='/positions'>Positions</a>
+      </li>
+    </ul>
+</nav>

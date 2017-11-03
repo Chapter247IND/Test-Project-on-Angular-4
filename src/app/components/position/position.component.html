@@ -1,0 +1,81 @@
+<app-header></app-header>
+<br>
+<ngb-tabset class="account-info-tab">
+  <ngb-tab *ngFor="let tab of tabs; let ind = index">
+    <ng-template ngbTabTitle ><span (click)="tabChanged(ind)"><b>{{tab.name}}</b></span></ng-template>
+    <ng-template ngbTabContent>
+    	<br>
+    <div>
+    	<div class="row">
+    		<div class="col-sm-6 no-padding-right">
+    			<form role="form">
+    				<div class="form-group">
+    					<select class="form-control" name="dropDownValue" [(ngModel)]="dropDownValue[ind]" (ngModelChange)="dropDownValueChanged(ind)">
+    						<option value="">Select</option>
+    						<option *ngFor="let d of allData; let i = index;" value="{{i}}">{{d.name}}</option>
+    					</select>
+    				</div>
+    			</form>
+    		</div>
+    		<div class="col-sm-6"></div>
+    	</div>
+    	<div class="row padding-30" *ngIf="dropDownValue[ind]">
+    		<div class="col-sm-6 deal-section-box no-padding">
+    			<div class="table-responsive">
+    				<table class="table table-bordered">
+    					<thead>
+    						<tr>
+    							<th>Deal/Facility</th>
+    							<th>Share</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+    						<tr *ngFor="let deal of dealData; let in=index" (click)="dealClicked(in)" style="cursor: pointer;" [ngClass]="{'active-deal': selectedIndex==in}">
+    							<td>{{deal.deal}}</td>
+    							<td>{{deal.share}}</td>
+    						</tr>
+    						<tr *ngIf="dealData.length==0">
+    							<td colspan="2" class="text-center">No Data Found !</td>
+    						</tr>
+    					</tbody>
+    				</table>
+    			</div>
+    		</div>
+    		<div class="col-sm-6 deal-section-box no-padding" *ngIf="isDealSelected">
+    			<div class="deal-detail-header" *ngIf="selectedDeal">
+    				<h4>Position Details</h4>
+    				<span>{{selectedDeal}}</span>
+    			</div>
+    			<br>
+    			<div class="table-responsive">
+    				<table class="table table-bordered">
+    					<thead>
+    						<tr>
+    							<th>Activity</th>
+    							<th>Post Dt</th>
+    							<th>Eff. Dt</th>
+    							<th>Amount</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+    						<tr *ngFor="let deal of dealDetails; let in=index">
+    							<td>{{deal.activity}}</td>
+    							<td>{{deal.postDate}}</td>
+    							<td>{{deal.effectiveDate}}</td>
+    							<td>{{deal.amount}}</td>
+    						</tr>
+    						<tr *ngIf="dealDetails.length==0">
+    							<td colspan="4" class="text-center">No Data Found !</td>
+    						</tr>
+    					</tbody>
+    				</table>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    	<br>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+<br>
+<app-footer></app-footer>
